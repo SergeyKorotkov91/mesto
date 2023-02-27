@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Html, CSS, JS">
+  <meta name="author" content="Сергей Коротков">
+  <title>Место</title>
+</head>
+    <body class="page">
+        <header class="header">
+            <img class="header__logo" src="images/logo.svg" alt="Логотип сайта Место.">
+        </header>
+        <div class="main">
+            <main class="content">
+                <section class="profile">
+                    <img class="profile__avatar" src="images/profile-kusto.jpg" alt="Аватар пользователя">
+                    <div class="profile__info">
+                      <h1 class="profile__title">Жак-Ив Кусто</h1>
+                      <button type="button" class="profile__edit-button"></button>
+                    </div>
+                    <p class="profile__description">Исследователь океана</p>
+                  <button type="button" class="profile__add-button"></button>
+                </section>
+                <section class="elements">
+                    <ul class="elements__cards">
+                        <li class="element">
+                            <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
+                            <div class="element__bottom-block">
+                                <h2 class="element__title">Гора</h2>
+                                <button type="button" class="element__like-btn"></button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__img" src="https://images.unsplash.com/photo-1664103791881-d589d8ed616f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="картинка">
+                            <div class="element__bottom-block">
+                                <h2 class="element__title">Человек в горах</h2>
+                                <button type="button" class="element__like-btn"></button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__img" src="https://images.unsplash.com/photo-1637483642231-7d4e9a03b368?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
+                            <div class="element__bottom-block">
+                                <h2 class="element__title">You can belive</h2>
+                                <button type="button" class="element__like-btn"></button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__img" src="https://images.unsplash.com/photo-1636219515921-6e82ea902b8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
+                            <div class="element__bottom-block">
+                                <h2 class="element__title">Горная дорога</h2>
+                                <button type="button" class="element__like-btn"></button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__img" src="https://images.unsplash.com/photo-1634806279613-761a81e80957?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
+                            <div class="element__bottom-block">
+                                <h2 class="element__title">Старая квартира</h2>
+                                <button type="button" class="element__like-btn"></button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__img" src="https://images.unsplash.com/photo-1628263189780-eaa52427d51e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NzB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
+                            <div class="element__bottom-block">
+                                <h2 class="element__title">Пчела на цветке</h2>
+                                <button type="button" class="element__like-btn"></button>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <footer class="footer">
+                    <p class="footer__copyright">&copy;2023 Mesto Russia</p>
+                </footer>
+                <div class="popup">
+                    <div class="popup__content">
+                      <button type="button" class="popup__close-button" aria-label="закрыть"></button>
+                      <h2 class="popup__title">Редактировать профиль</h2>
+                      <form class="popup__form" name="main">
+                        <input type="text" class="popup__input popup__input_name" name="name">
+                        <input type="text" class="popup__input popup__input_description" name="description">
+                        <button type="submit" class="popup__save-button">Сохранить</button>
+                      </form>
+                    </div>
+                  </div>
+        </div>
+        <script src="script/index.js"></script>
+    </body>
+</html>
