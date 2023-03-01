@@ -12,7 +12,6 @@
         <header class="header">
             <img class="header__logo" src="images/logo.svg" alt="Логотип сайта Место.">
         </header>
-        <div class="main">
             <main class="content">
                 <section class="profile">
                     <img class="profile__avatar" src="images/profile-kusto.jpg" alt="Аватар пользователя">
@@ -69,22 +68,21 @@
                         </li>
                     </ul>
                 </section>
+            </main>
                 <footer class="footer">
                     <p class="footer__copyright">&copy;2023 Mesto Russia</p>
                 </footer>
                 <div class="popup">
-                    <div class="popup__content">
+                    <div class="popup__container">
                       <button type="button" class="popup__close-button" aria-label="закрыть"></button>
                       <h2 class="popup__title">Редактировать профиль</h2>
                       <form class="popup__form" name="main">
-                        <input type="text" class="popup__input popup__input_name" name="name">
-                        <input type="text" class="popup__input popup__input_description" name="description">
+                        <input type="text" class="popup__input popup__input_name_value" name="name">
+                        <input type="text" class="popup__input popup__input_description_value" name="description">
                         <button type="submit" class="popup__save-button">Сохранить</button>
                       </form>
                     </div>
                   </div>
-            </main>
-        </div>
-        <script src="script/index.js"></script>
+        <script src="scripts/index.js"></script>
     </body>
 </html>
