@@ -24,65 +24,57 @@
                 </section>
                 <section class="elements">
                     <ul class="elements__cards">
-                        <li class="element">
-                            <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
-                            <div class="element__bottom-block">
-                                <h2 class="element__title">Гора</h2>
-                                <button type="button" class="element__like-btn"></button>
-                            </div>
-                        </li>
-                        <li class="element">
-                            <img class="element__img" src="https://images.unsplash.com/photo-1664103791881-d589d8ed616f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="картинка">
-                            <div class="element__bottom-block">
-                                <h2 class="element__title">Человек в горах</h2>
-                                <button type="button" class="element__like-btn"></button>
-                            </div>
-                        </li>
-                        <li class="element">
-                            <img class="element__img" src="https://images.unsplash.com/photo-1637483642231-7d4e9a03b368?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
-                            <div class="element__bottom-block">
-                                <h2 class="element__title">You can belive</h2>
-                                <button type="button" class="element__like-btn"></button>
-                            </div>
-                        </li>
-                        <li class="element">
-                            <img class="element__img" src="https://images.unsplash.com/photo-1636219515921-6e82ea902b8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
-                            <div class="element__bottom-block">
-                                <h2 class="element__title">Горная дорога</h2>
-                                <button type="button" class="element__like-btn"></button>
-                            </div>
-                        </li>
-                        <li class="element">
-                            <img class="element__img" src="https://images.unsplash.com/photo-1634806279613-761a81e80957?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
-                            <div class="element__bottom-block">
-                                <h2 class="element__title">Старая квартира</h2>
-                                <button type="button" class="element__like-btn"></button>
-                            </div>
-                        </li>
-                        <li class="element">
-                            <img class="element__img" src="https://images.unsplash.com/photo-1628263189780-eaa52427d51e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NzB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="картинка">
-                            <div class="element__bottom-block">
-                                <h2 class="element__title">Пчела на цветке</h2>
-                                <button type="button" class="element__like-btn"></button>
-                            </div>
-                        </li>
+
                     </ul>
                 </section>
             </main>
                 <footer class="footer">
                     <p class="footer__copyright">&copy;2023 Mesto Russia</p>
                 </footer>
-                <div class="popup">
+
+                <div class="popup popup_type_profile">
                     <div class="popup__container">
-                      <button type="button" class="popup__close-button" aria-label="закрыть"></button>
+                      <button type="button" class="popup__close-button popup__close-button_type_profile" aria-label="закрыть"></button>
                       <h2 class="popup__title">Редактировать профиль</h2>
-                      <form class="popup__form" name="main">
+                      <form class="popup__form-profile" name="main">
                         <input type="text" class="popup__input popup__input_name_value" name="name">
                         <input type="text" class="popup__input popup__input_description_value" name="description">
                         <button type="submit" class="popup__save-button">Сохранить</button>
                       </form>
                     </div>
-                  </div>
+                </div>
+
+                <div class="popup popup_type_new-place">
+                    <div class="popup__container">
+                      <button type="button" class="popup__close-button popup__close-button_type_newplace" aria-label="закрыть"></button>
+                      <h2 class="popup__title">Новое место</h2>
+                      <form class="popup__form-newplace" name="main">
+                        <input type="text" class="popup__input popup__input_place_value" name="place" placeholder="Название">
+                        <input type="text" class="popup__input popup__input_src_value" name="link" placeholder="Ссылка на картинку">
+                        <button type="submit" class="popup__save-button">Создать</button>
+                      </form>
+                    </div>
+                </div>
+
+                <div class="popup popup_type_image">
+                    <div class="popup__container_type_image">
+                      <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="закрыть"></button>
+                      <img class="popup__image" src="./images/profile-kusto.jpg"
+                        alt="фото не загрузилось, возможно не верная ссылка">
+                      <p class="popup__image-text"></p>
+                    </div>
+                </div>
+
+                <template class="template">
+                    <li class="element">
+                        <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
+                        <div class="element__bottom-block">
+                            <h2 class="element__title">Гора</h2>
+                            <button type="button" class="element__like-btn"></button>
+                        </div>
+                        <button type="button" class="element__delete-btn"></button>
+                    </li>
+                </template>
         <script src="scripts/index.js"></script>
     </body>
 </html>
