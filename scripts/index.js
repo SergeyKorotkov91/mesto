@@ -88,7 +88,7 @@ function addPlace(evt) {
     elementCards.prepend(card);
 }
 
-function handleFormSubmit(evt) {
+function handleFormProfileSubmit(evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
@@ -125,5 +125,5 @@ popupCloseBtnImage.addEventListener('click', function () {
     closePopup(popupImage);
 })
 
-formElementProfile.addEventListener('submit', handleFormSubmit);
+formElementProfile.addEventListener('submit', handleFormProfileSubmit);
 formElementNewPlace.addEventListener('submit', addPlace);
