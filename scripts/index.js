@@ -59,17 +59,17 @@ function popupEnableCloseBehavior(selector) {
     });
 }
 
-popupEnableCloseBehavior('.popup__type_profile');
-popupEnableCloseBehavior('.popup__type_newplace');
-popupEnableCloseBehavior('.popup__type_image');
+popupEnableCloseBehavior('.popup__type-profile');
+popupEnableCloseBehavior('.popup__type-newplace');
+popupEnableCloseBehavior('.popup__type-images');
 
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
-const profilePopupName = document.querySelector('.popup__type_profile_input_name');
-const profilePopupDescription = document.querySelector('.popup__type_profile_input_description');
-document.querySelector('.popup__type_profile .popup__form').addEventListener('submit', (evt) => {
+const profilePopupName = document.querySelector('.popup__type-profile_input_name');
+const profilePopupDescription = document.querySelector('.popup__type-profile_input_description');
+document.querySelector('.popup__type-profile .popup__form').addEventListener('submit', (evt) => {
     evt.preventDefault();
-    popupClose('.popup__type_profile');
+    popupClose('.popup__type-profile');
 
     profileTitle.textContent = profilePopupName.value;
     profileDescription.textContent = profilePopupDescription.value;
@@ -79,22 +79,22 @@ document.querySelector('.profile__edit-button').addEventListener('click', () => 
     profilePopupName.value = profileTitle.textContent;
     profilePopupDescription.value = profileDescription.textContent;
 
-    popupOpen('.popup__type_profile');
+    popupOpen('.popup__type-profile');
 });
 
-const newplacePopupName = document.querySelector('.popup__type_newplace_input_name');
-const newplacePopupLink = document.querySelector('.popup__type_newplace_input_link');
-document.querySelector('.popup__type_newplace .popup__form').addEventListener('submit', (evt) => {
+const newplacePopupName = document.querySelector('.popup__type-newplace_input_name');
+const newplacePopupLink = document.querySelector('.popup__type-newplace_input_link');
+document.querySelector('.popup__type-newplace .popup__form').addEventListener('submit', (evt) => {
     evt.preventDefault();
-    popupClose('.popup__type_newplace');
+    popupClose('.popup__type-newplace');
 
     cardCreate('begin', newplacePopupName.value, newplacePopupLink.value);
 
-    document.querySelector('.popup__type_newplace .popup__form').reset();
+    document.querySelector('.popup__type-newplace .popup__form').reset();
 });
 
 document.querySelector('.profile__add-button').addEventListener('click', () => {
-    popupOpen('.popup__type_newplace');
+    popupOpen('.popup__type-newplace');
 });
 
 enableValidation({
