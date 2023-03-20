@@ -9,7 +9,7 @@ function cardCreate(where, name, link) {
     image.alt = name;
 
     image.addEventListener('click', () => {
-        popupOpen('.popup_type_image');
+        popupOpen('.popup__type-images');
         document.querySelector('.popup__image').src = link;
         document.querySelector('.popup__image').alt = name;
         document.querySelector('.popup__image-text').textContent = name;
