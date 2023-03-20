@@ -32,7 +32,7 @@
         <p class="footer__copyright">&copy;2023 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup__type-profile" tabindex="0">
+    <div class="popup popup__profile" tabindex="0">
         <div class="popup__container">
             <button type="button" class="popup__close-button" aria-label="закрыть"></button>
 
@@ -40,12 +40,12 @@
 
             <form class="popup__form" name="main" novalidate>
                 <input type="text" id="name" name="name" placeholder="Ваше имя"
-                    class="popup__input popup__type-profile_input_name"
+                    class="popup__input popup__profile-name"
                     required minlength="2" maxlength="40">
                 <span class="popup__input-error name-error"></span>
 
                 <input type="text" id="description" name="description" placeholder="Род деятельности"
-                    class="popup__input popup__type-profile_input_description"
+                    class="popup__input popup__profile-description"
                     required minlength="2" maxlength="200">
                 <span class="popup__input-error description-error"></span>
 
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="popup popup__type-newplace" tabindex="0">
+    <div class="popup popup__newplace" tabindex="0">
         <div class="popup__container">
             <button type="button" class="popup__close-button" aria-label="закрыть"></button>
 
@@ -62,12 +62,12 @@
 
             <form class="popup__form" novalidate>
                 <input type="text" name="name" placeholder="Название"
-                    class="popup__input popup__type-newplace_input_name"
+                    class="popup__input popup__newplace-name"
                     required minlength="2" maxlength="30">
                 <span class="popup__input-error name-error"></span>
 
                 <input type="url" name="link" placeholder="Ссылка на картинку"
-                    class="popup__input popup__type-newplace_input_link"
+                    class="popup__input popup__newplace-link"
                     required>
                 <span class="popup__input-error link-error"></span>
 
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <div class="popup popup__type-images" tabindex="0">
+    <div class="popup popup__images" tabindex="0">
         <div class="popup__type-image">
             <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="закрыть"></button>
             <img class="popup__image" src="./images/profile-kusto.jpg" alt="фото не загрузилось, возможно не верная ссылка">
