@@ -1,29 +1,42 @@
-function enableValidation(popup, {inputErrorClass, errorClass}) {
-    const updateSubmit = () => {
-        const valid = popup.inputs.every(x => x.validity.valid);
-        popup.submit.disabled = !valid;
-    };
+function enableValidation({
+    formSelector,
+    inputSelector,
+    submitButtonSelector,
+    inactiveButtonClass,
+    inputErrorClass,
+    errorClass
+}) {
+    document.querySelectorAll(formSelector).forEach(form => {
+        const inputs = Array.from(form.querySelectorAll(inputSelector));
+        const submit = form.querySelector(submitButtonSelector);
 
-    const updateInput = (input) => {
-        input.classList.toggle(inputErrorClass, !input.validity.valid);
+        const updateSubmit = () => {
+            const valid = inputs.every(x => x.validity.valid);
+            submit.disabled = !valid;
+            submit.classList.toggle(inactiveButtonClass, !valid);
+        };
 
-        const error = popup.form.querySelector(`.${input.name}-error`);
-        error.classList.toggle(errorClass, !input.validity.valid);
-        error.textContent = input.validationMessage;
-    };
+        const updateInput = (input) => {
+            input.classList.toggle(inputErrorClass, !input.validity.valid);
 
-    popup.inputs.forEach(input => {
-        input.addEventListener('input', () => {
-            updateInput(input);
-            updateSubmit();
+            const error = form.querySelector(`.${input.name}-error`);
+            error.classList.toggle(errorClass, !input.validity.valid);
+            error.textContent = input.validationMessage;
+        };
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                updateInput(input);
+                updateSubmit();
+            });
         });
+
+        const reset = () => {
+            inputs.forEach(input => updateInput(input));
+            updateSubmit();
+        };
+
+        form.addEventListener('submit', reset);
+        // reset();
     });
-
-    const reset = () => {
-        popup.inputs.forEach(input => updateInput(input));
-        updateSubmit();
-    };
-
-    popup.form.addEventListener('submit', reset);
-    reset();
 }
