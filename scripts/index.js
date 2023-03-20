@@ -94,7 +94,7 @@ document.querySelector('.popup_newplace .popup__form').addEventListener('submit'
 });
 
 document.querySelector('.profile__add-button').addEventListener('click', () => {
-    popupOpen('.popup__newplace-popup');
+    popupOpen('.popup_newplace');
 });
 
 enableValidation({
