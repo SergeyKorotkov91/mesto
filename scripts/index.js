@@ -9,7 +9,7 @@ function cardCreate(where, name, link) {
     image.alt = name;
 
     image.addEventListener('click', () => {
-        popupOpen('.popup__images-popup');
+        popupOpen('.popup_images');
         document.querySelector('.popup__image').src = link;
         document.querySelector('.popup__image').alt = name;
         document.querySelector('.popup__image-text').textContent = name;
@@ -59,17 +59,17 @@ function popupEnableCloseBehavior(selector) {
     });
 }
 
-popupEnableCloseBehavior('.popup__profile-popup');
-popupEnableCloseBehavior('.popup__newplace-popup');
-popupEnableCloseBehavior('.popup__images-popup');
+popupEnableCloseBehavior('.popup_profile');
+popupEnableCloseBehavior('.popup_newplace');
+popupEnableCloseBehavior('.popup_images');
 
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 const profilePopupName = document.querySelector('.popup__profile-name');
 const profilePopupDescription = document.querySelector('.popup__profile-description');
-document.querySelector('.popup__profile-popup .popup__form').addEventListener('submit', (evt) => {
+document.querySelector('.popup_profile .popup__form').addEventListener('submit', (evt) => {
     evt.preventDefault();
-    popupClose('.popup__profile-popup');
+    popupClose('.popup_profile');
 
     profileTitle.textContent = profilePopupName.value;
     profileDescription.textContent = profilePopupDescription.value;
@@ -79,18 +79,18 @@ document.querySelector('.profile__edit-button').addEventListener('click', () => 
     profilePopupName.value = profileTitle.textContent;
     profilePopupDescription.value = profileDescription.textContent;
 
-    popupOpen('.popup__profile-popup');
+    popupOpen('.popup_profile');
 });
 
 const newplacePopupName = document.querySelector('.popup__newplace-name');
 const newplacePopupLink = document.querySelector('.popup__newplace-link');
-document.querySelector('.popup__newplace-popup .popup__form').addEventListener('submit', (evt) => {
+document.querySelector('.popup_newplace .popup__form').addEventListener('submit', (evt) => {
     evt.preventDefault();
-    popupClose('.popup__newplace-popup');
+    popupClose('.popup_newplace');
 
     cardCreate('begin', newplacePopupName.value, newplacePopupLink.value);
 
-    document.querySelector('.popup__newplace-popup .popup__form').reset();
+    document.querySelector('.popup_newplace .popup__form').reset();
 });
 
 document.querySelector('.profile__add-button').addEventListener('click', () => {
