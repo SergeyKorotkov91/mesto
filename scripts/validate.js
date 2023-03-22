@@ -1,42 +1,78 @@
-function enableValidation({
-    formSelector,
-    inputSelector,
-    submitButtonSelector,
-    inactiveButtonClass,
-    inputErrorClass,
-    errorClass
-}) {
-    document.querySelectorAll(formSelector).forEach(form => {
-        const inputs = Array.from(form.querySelectorAll(inputSelector));
-        const submit = form.querySelector(submitButtonSelector);
+ const validationConfig = {
+   formSelector: '.popup__form',
+   inputSelector: '.popup__input',
+   submitButtonSelector: '.popup__save-button',
+   inactiveButtonClass: 'popup__save-button_inactive',
+   inputErrorClass: 'popup__input_type_error',
+   errorClass: 'popup__input-error_active'
+ };
 
-        const updateSubmit = () => {
-            const valid = inputs.every(x => x.validity.valid);
-            submit.disabled = !valid;
-            submit.classList.toggle(inactiveButtonClass, !valid);
-        };
+    
+     const showInputError = (form, input, inputErrorClass, errorClass, errorMessage) => {
+       const error = form.querySelector(`.${input.id}-error`);
+       input.classList.add(inputErrorClass);
+       error.textContent = errorMessage;
+       error.classList.add(errorClass);
+     };
+    
+     const hideInputError = (form, input, inputErrorClass, errorClass) => {
+       const error = form.querySelector(`.${input.id}-error`);
+       input.classList.remove(inputErrorClass);
+       error.classList.remove(errorClass);
+       error.textContent = '';
+     };
+    
+     const checkInputValidity = (form, input, config) => {
+       if (!input.validity.valid) {
+         showInputError(form, input, config.inputErrorClass, config.errorClass, input.validationMessage);
+       } else {
+         hideInputError(form, input, config.inputErrorClass, config.errorClass);
+       }
+     };
+    
+     const hasInvalidInput = (inputList) => {
+       return inputList.some((input) => {
+         return !input.validity.valid;
+       });
+     };
+    
+     const toggleButtonState = (inputList, button, inactiveButtonClass) => {
+       if (hasInvalidInput(inputList)) {
+         button.classList.add(inactiveButtonClass);
+         button.setAttribute('disabled', true);
+       } else {
+         button.classList.remove(inactiveButtonClass);
+         button.removeAttribute('disabled');
+       }
+     };
+    
+     const setEventListeners = (form, config) => {
+       const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+       const button = form.querySelector(config.submitButtonSelector);
+       inputList.forEach((input) => {
+         input.addEventListener('input', function () {
+           checkInputValidity(form, input, config);
+           toggleButtonState(inputList, button, config.inactiveButtonClass);
+         });
+       });
+     };
+    
+     const enableValidation = (config) => {
+       const formList = Array.from(document.querySelectorAll(config.formSelector));
+       formList.forEach((form) => {
+         setEventListeners(form, config);
+       });
+     };
+    
+     enableValidation(validationConfig);
+    
+     const clearErrorValidation = (form, config) => {
+       const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+       const button = form.querySelector(config.submitButtonSelector);
+       inputList.forEach((input) => {
+         hideInputError(form, input, config.inputErrorClass, config.errorClass);
+       });
+       toggleButtonState(inputList, button, config.inactiveButtonClass);
+    };
 
-        const updateInput = (input) => {
-            input.classList.toggle(inputErrorClass, !input.validity.valid);
-
-            const error = form.querySelector(`.${input.name}-error`);
-            error.classList.toggle(errorClass, !input.validity.valid);
-            error.textContent = input.validationMessage;
-        };
-
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                updateInput(input);
-                updateSubmit();
-            });
-        });
-
-        const reset = () => {
-            inputs.forEach(input => updateInput(input));
-            updateSubmit();
-        };
-
-        form.addEventListener('submit', reset);
-        // reset();
-    });
-}
+  

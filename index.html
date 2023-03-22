@@ -1,103 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./pages/index.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Html, CSS, JS">
-    <meta name="author" content="Сергей Коротков">
-    <title>Место</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Html, CSS, JS">
+  <meta name="author" content="Сергей Коротков">
+  <title>Место</title>
 </head>
-<body class="page">
-    <header class="header">
-        <img class="header__logo" src="images/logo.svg" alt="Логотип сайта Место.">
-    </header>
-    <main class="content">
-        <section class="profile">
-            <img class="profile__avatar" src="images/profile-kusto.jpg" alt="Аватар пользователя">
-            <div class="profile__info">
-                <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button type="button" class="profile__edit-button"></button>
-            </div>
-            <p class="profile__description">Исследователь океана</p>
-            <button type="button" class="profile__add-button"></button>
-        </section>
-        <section class="elements">
-            <ul class="elements__cards">
-            </ul>
-        </section>
-    </main>
+    <body class="page">
+        <header class="header">
+            <img class="header__logo" src="images/logo.svg" alt="Логотип сайта Место.">
+        </header>
+            <main class="content">
+                <section class="profile">
+                    <img class="profile__avatar" src="images/profile-kusto.jpg" alt="Аватар пользователя">
+                    <div class="profile__info">
+                      <h1 class="profile__title">Жак-Ив Кусто</h1>
+                      <button type="button" class="profile__edit-button"></button>
+                    </div>
+                    <p class="profile__description">Исследователь океана</p>
+                  <button type="button" class="profile__add-button"></button>
+                </section>
+                <section class="elements">
+                    <ul class="elements__cards">
 
-    <footer class="footer">
-        <p class="footer__copyright">&copy;2023 Mesto Russia</p>
-    </footer>
+                    </ul>
+                </section>
+            </main>
+                <footer class="footer">
+                    <p class="footer__copyright">&copy;2023 Mesto Russia</p>
+                </footer>
 
-    <div class="popup popup_profile" tabindex="0">
-        <div class="popup__container">
-            <button type="button" class="popup__close-button" aria-label="закрыть"></button>
+                <div class="popup popup_type_profile">
+                    <div class="popup__container">
+                      <button type="button" class="popup__close-button popup__close-button_type_profile" aria-label="закрыть"></button>
+                      <h2 class="popup__title">Редактировать профиль</h2>
+                      <form class="popup__form popup__form-profile" name="main" novalidate>
+                        <input type="text" class="popup__input popup__input_name_value"
+                         required placeholder="Ваше имя" name="name" id="input-name"
+                         minlength="2" maxlength="40">
+                         <span class="popup__input-error input-name-error"></span>
+                        <input type="text" class="popup__input popup__input_description_value" 
+                        required placeholder="Род деятельности" name="description"
+                        minlength="2" maxlength="200" id="input-descriptiond">
+                        <span class="popup__input-error input-description-error"></span>
+                        <button type="submit" class="popup__save-button">Сохранить</button>
+                      </form>
+                    </div>
+                </div>
 
-            <h2 class="popup__title">Редактировать профиль</h2>
+                <div class="popup popup_type_new-place">
+                    <div class="popup__container">
+                      <button type="button" class="popup__close-button popup__close-button_type_newplace" aria-label="закрыть"></button>
+                      <h2 class="popup__title">Новое место</h2>
+                      <form class="popup__form popup__form-newplace" name="main" novalidate>
+                        <input type="text" class="popup__input popup__input_place_value" name="place"
+                         required placeholder="Название"
+                         minlength="2" maxlength="30" id="input-place">
+                         <span class="popup__input-error input-place-error"></span>
+                        <input type="url" class="popup__input popup__input_src_value" name="link" 
+                        required placeholder="Ссылка на картинку" id="input-url">
+                        <span class="popup__input-error input-url-error"></span>
+                        <button type="submit" class="popup__save-button">Создать</button>
+                      </form>
+                    </div>
+                </div>
 
-            <form class="popup__form" name="main" novalidate>
-                <input type="text" id="name" name="name" placeholder="Ваше имя"
-                    class="popup__input popup__profile-name"
-                    required minlength="2" maxlength="40">
-                <span class="popup__input-error name-error"></span>
+                <div class="popup popup_type_image">
+                    <div class="popup__type-image">
+                      <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="закрыть"></button>
+                      <img class="popup__image" src="./images/profile-kusto.jpg"
+                        alt="фото не загрузилось, возможно не верная ссылка">
+                      <p class="popup__image-text"></p>
+                    </div>
+                </div>
 
-                <input type="text" id="description" name="description" placeholder="Род деятельности"
-                    class="popup__input popup__profile-description"
-                    required minlength="2" maxlength="200">
-                <span class="popup__input-error description-error"></span>
-
-                <button type="submit" class="popup__save-button">Сохранить</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="popup popup_newplace" tabindex="0">
-        <div class="popup__container">
-            <button type="button" class="popup__close-button" aria-label="закрыть"></button>
-
-            <h2 class="popup__title">Новое место</h2>
-
-            <form class="popup__form" novalidate>
-                <input type="text" name="name" placeholder="Название"
-                    class="popup__input popup__newplace-name"
-                    required minlength="2" maxlength="30">
-                <span class="popup__input-error name-error"></span>
-
-                <input type="url" name="link" placeholder="Ссылка на картинку"
-                    class="popup__input popup__newplace-link"
-                    required>
-                <span class="popup__input-error link-error"></span>
-
-                <button type="submit" class="popup__save-button">Создать</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="popup popup_images" tabindex="0">
-        <div class="popup__type-image">
-            <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="закрыть"></button>
-            <img class="popup__image" src="./images/profile-kusto.jpg" alt="фото не загрузилось, возможно не верная ссылка">
-            <p class="popup__image-text"></p>
-        </div>
-    </div>
-
-    <template class="element-template">
-        <li class="element">
-            <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
-            <div class="element__bottom-block">
-                <h2 class="element__title"></h2>
-                <button type="button" class="element__like-btn"></button>
-            </div>
-            <button type="button" class="element__delete-btn"></button>
-        </li>
-    </template>
-
-
-    <script src="scripts/validate.js"></script>
-    <script src="scripts/data.js"></script>
-    <script src="scripts/index.js"></script>
-</body>
+                <template class="template">
+                    <li class="element">
+                        <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
+                        <div class="element__bottom-block">
+                            <h2 class="element__title">Гора</h2>
+                            <button type="button" class="element__like-btn"></button>
+                        </div>
+                        <button type="button" class="element__delete-btn"></button>
+                    </li>
+                </template>
+                <script src="scripts/validate.js"></script>
+        <script src="scripts/index.js"></script>
+    </body>
 </html>
