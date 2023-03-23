@@ -19,33 +19,9 @@ const deleteBtn = document.querySelector('.lement__delete-btn');
 const likeBtn = document.querySelector('.element__like-btn');
 const itemTemplate = document.querySelector('.template').content;
 const itemTemplateCard = itemTemplate.querySelector('.element');
+const popupBigImg = document.querySelector('.popup__image');
+const popupBigImgText = document.querySelector('.popup__image-text');
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 
 initialCards.forEach(function (el) {
     const card = createCardEl(el.name, el.link);
@@ -63,10 +39,10 @@ function createCardEl(name, link) {
         buttonHeart.classList.toggle('element__like-btn_active');
     });
     elementImage.addEventListener('click', function () {
-        popupImage.classList.add('popup_opened');
-        document.querySelector('.popup__image').src = link;
-        document.querySelector('.popup__image').alt = name;
-        document.querySelector('.popup__image-text').textContent = name;
+        openPopup(popupImage);
+        popupBigImg.src = elementImage.src;
+        popupBigImg.alt = elementImage.alt;
+        popupBigImgText.textContent = elementText.textContent;
     });
     deleteBtn.addEventListener('click', function (evt) {
         itemTemplateCardNew.remove();
@@ -82,7 +58,6 @@ function addPlace(evt) {
     const name = placeInput.value;
     const link = srcInput.value;
     const card = createCardEl(name, link);
-    createCardEl(name, link);
     closePopup(popupNewPlace);
     formElementNewPlace.reset();
     elementCards.prepend(card);
@@ -125,10 +100,12 @@ profileEditButton.addEventListener('click', function () {
     openPopup(popupProfile);
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileDescription.textContent;
+    clearErrorValidation(popupProfile, validationConfig);
 });
 
 addCard.addEventListener('click', function() {
     openPopup(popupNewPlace);
+    clearErrorValidation(popupNewPlace, validationConfig);
 })
 
 popupCloseBtnProfile.addEventListener('click', function () {
