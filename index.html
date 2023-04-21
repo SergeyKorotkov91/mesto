@@ -36,9 +36,15 @@
                     <div class="popup__container">
                       <button type="button" class="popup__close-button popup__close-button_type_profile" aria-label="закрыть"></button>
                       <h2 class="popup__title">Редактировать профиль</h2>
-                      <form class="popup__form-profile" name="main">
-                        <input type="text" class="popup__input popup__input_name_value" required placeholder="Ваше имя" name="name">
-                        <input type="text" class="popup__input popup__input_description_value" required placeholder="Род деятельности" name="description">
+                      <form class="popup__form popup__form-profile" name="main" novalidate>
+                        <input type="text" class="popup__input popup__input_name_value"
+                         required placeholder="Ваше имя" name="name" id="input-name"
+                         minlength="2" maxlength="40">
+                         <span class="popup__input-error input-name-error"></span>
+                        <input type="text" class="popup__input popup__input_description_value" 
+                        required placeholder="Род деятельности" name="description"
+                        minlength="2" maxlength="200" id="input-description">
+                        <span class="popup__input-error input-description-error"></span>
                         <button type="submit" class="popup__save-button">Сохранить</button>
                       </form>
                     </div>
@@ -48,9 +54,14 @@
                     <div class="popup__container">
                       <button type="button" class="popup__close-button popup__close-button_type_newplace" aria-label="закрыть"></button>
                       <h2 class="popup__title">Новое место</h2>
-                      <form class="popup__form-newplace" name="main">
-                        <input type="text" class="popup__input popup__input_place_value" name="place" required placeholder="Название">
-                        <input type="url" class="popup__input popup__input_src_value" name="link" required placeholder="Ссылка на картинку">
+                      <form class="popup__form popup__form-newplace" name="main" novalidate>
+                        <input type="text" class="popup__input popup__input_place_value" name="place"
+                         required placeholder="Название"
+                         minlength="2" maxlength="30" id="input-place">
+                         <span class="popup__input-error input-place-error"></span>
+                        <input type="url" class="popup__input popup__input_src_value" name="link" 
+                        required placeholder="Ссылка на картинку" id="input-url">
+                        <span class="popup__input-error input-url-error"></span>
                         <button type="submit" class="popup__save-button">Создать</button>
                       </form>
                     </div>
@@ -59,13 +70,13 @@
                 <div class="popup popup_type_image">
                     <div class="popup__type-image">
                       <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="закрыть"></button>
-                      <img class="popup__image" src="./images/profile-kusto.jpg"
+                      <img class="popup__image" src="#"
                         alt="фото не загрузилось, возможно не верная ссылка">
                       <p class="popup__image-text"></p>
                     </div>
                 </div>
 
-                <template class="template">
+                <template class="template" id="cardTemplate">
                     <li class="element">
                         <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
                         <div class="element__bottom-block">
@@ -75,6 +86,8 @@
                         <button type="button" class="element__delete-btn"></button>
                     </li>
                 </template>
-        <script src="scripts/index.js"></script>
+                <!--<script src="scripts/constants.js"></script>-->
+                <!--<script src="scripts/validate.js"></script>-->
+        <script type="module" src="scripts/index.js"></script>
     </body>
 </html>
