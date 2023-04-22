@@ -34,18 +34,20 @@ const formCardAddValidator = new FormValidator(validationConfig, popupNewPlace);
 formCardAddValidator.enableValidation();
 
 initialCards.forEach(function (el) {
-    const card = new Card(el, '#cardTemplate', openCard);
-    const cardElement = card.createCard();
-    elementCards.append(cardElement);
+    elementCards.append(createCard(el));
 });
 
 function addPlace(evt) {
     evt.preventDefault();
-    const card = new Card({name : placeInput.value, link : srcInput.value, alt : placeInput.value}, '#cardTemplate', openCard);
-    const cardElement = card.createCard();
+    elementCards.prepend(createCard({name : placeInput.value, link : srcInput.value, alt : placeInput.value}, '#cardTemplate', openCard));
     closePopup(popupNewPlace);
     formElementNewPlace.reset();
-    elementCards.prepend(cardElement);
+}
+
+function createCard(item) {
+    const card = new Card(item, '#cardTemplate', openCard);
+    const cardElement = card.createCard();
+    return cardElement;
 }
 
 function openCard(name, link) {
