@@ -23,8 +23,7 @@ const section = new Section({
     renderer: (item) => {
       renderCard(item);
     }
-},
-    '.elements__cards');
+}, '.elements__cards');
   
 section.renderItems();
 
@@ -32,11 +31,12 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 popupWithImage.setEventListeners();
 
 const formPopupNewPlace = new PopupWithForm({
-    popupSelector: '.popup_type_new-place',
-    handleFormSubmit: (item = {name : placeInput.value, link : srcInput.value, alt : placeInput.value}) => {
-      renderCard(item = {name : placeInput.value, link : srcInput.value, alt : placeInput.value});
-    }
-  });
+  popupSelector: '.popup_type_new-place',
+  handleFormSubmit: (item) => {
+    renderCard(item);
+    formPopupNewPlace.close();
+  }
+});
 formPopupNewPlace.setEventListeners();
 
 const userInfo = new UserInfo({
@@ -48,17 +48,16 @@ const formPopupProfile = new PopupWithForm({
     popupSelector: '.popup_type_profile',
     handleFormSubmit: (item) => {
       userInfo.setUserInfo(item.name, item.job);
+      formPopupProfile.close();
     }
 });
 formPopupProfile.setEventListeners();
 
 function openPopupEditProfile() {
     const user = userInfo.getUserInfo();
-    const name = user.name;
-    const job = user.job;
     formPopupProfile.open();
-    nameInput.value = name;
-    jobInput.value = job;
+    nameInput.value = user.name;
+    jobInput.value = user.job;
     formProfileValidator.clearErrorValidation();
 }
 

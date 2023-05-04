@@ -28,13 +28,14 @@ export class Card {
     
       return this._element;
     }
-    
+
     _likeCard(){
       this._elementLike.classList.toggle('element__like-btn_active');
     };
 
     _deleteCard(){
       this._element.remove();
+      this._element = null;
     };
       
     _setEventListeners(){
