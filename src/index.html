@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+  <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="Html, CSS, JS">
   <meta name="author" content="Сергей Коротков">
@@ -14,7 +14,10 @@
         </header>
             <main class="content">
                 <section class="profile">
+                  <div class="profile__avatar-init">
                     <img class="profile__avatar" src="<%=require('./images/profile-kusto.jpg')%>" alt="Аватар пользователя">
+                    <div class="profile__change-avatar"></div>
+                  </div>
                     <div class="profile__info">
                       <h1 class="profile__title">Жак-Ив Кусто</h1>
                       <button type="button" class="profile__edit-button"></button>
@@ -67,6 +70,30 @@
                     </div>
                 </div>
 
+                <div class="popup popup_type_avatar">
+                  <div class="popup__container">
+                    <button type="button" class="popup__close-button popup__close-button_type_avatar"></button>
+                    <h2 class="popup__title">Обновить аватар</h2>
+                    <form name="edit-avatar-form" action="#" class="popup__form popup__form-avatar" novalidate>
+                        <input type="url" name="avatar" id="input-url" placeholder="Ссылка на картинку"
+                          class="popup__input popup__input_src_value" required>
+                        <span class="popup__input-error input-url-error"></span>
+                        <button type="submit" class="popup__save-button">Сохранить</button>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="popup popup_type_delete-card">
+                  <div class="popup__container">
+                    <button type="button" class="popup__close-button"></button>
+                    <h2 class="popup__title popup__title-delete">Вы уверены?</h2>
+                    <form name="delete-form" action="#" class="popup__form popup__form-delete" novalidate>
+                        <button type="submit" class="popup__save-button">Да</button>
+                    </form>
+                  </div>
+                </div>
+
                 <div class="popup popup_type_image">
                     <div class="popup__type-image">
                       <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="закрыть"></button>
@@ -81,11 +108,14 @@
                         <img class="element__img" src="https://media.istockphoto.com/id/488624422/photo/mountain-landscape.jpg?s=170667a&w=0&k=20&c=SSMQOcsy7iczr80nuP7TWhkLk0NSE7LQM384epGmjQg=" alt="картинка">
                         <div class="element__bottom-block">
                             <h2 class="element__title">Гора</h2>
-                            <button type="button" class="element__like-btn"></button>
+                            <div class="element__likes">
+                              <button type="button" class="element__like-btn"></button>
+                              <span class="element__likes-number">1</span>
+                            </div>
                         </div>
                         <button type="button" class="element__delete-btn"></button>
                     </li>
                 </template>
-        <!-- <script type="module" src="pages/index.js"></script> -->
+        <script type="module" src="pages/index.js"></script>
     </body>
 </html>
