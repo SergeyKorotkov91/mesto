@@ -1,6 +1,6 @@
 import {validationConfig, popupAvatar,
   popupProfile, addCard, popupNewPlace, avatarEditBtn,
-  jobInput, nameInput, profileEditButton, avatar,
+  jobInput, nameInput, profileEditButton,
   popupBigImg, popupBigImgText} from '../utils/constants.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js';
@@ -12,6 +12,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
 
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
   headers: {
@@ -20,12 +21,10 @@ const api = new Api({
   }
 });
 
-let userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
     userInfo.setUserInfo(userData);
-    userId = userData._id;
     cardsList.renderItems(initialCards);
   })
   .catch((err) => {
@@ -57,7 +56,7 @@ const editAvatarPopup = new PopupWithForm({
     editAvatarPopup.loading(true);
     api.editAvatar(data)
       .then((data) => {
-        avatar.src = data.avatar;
+        userInfo.setUserInfo(data);
         editAvatarPopup.close();
       })
       .catch((err) => {
@@ -147,13 +146,13 @@ const createCard = (data) => {
   const card = new Card({
     data: data,
     cardTemplateSelector: '#cardTemplate',
-    userId: userId,
+    userId: userInfo.getUserId(),
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
     handleDeleteIconClick: (cardId) => {
       deleteCardPopup.open();
-      deleteCardPopup.submitCallback(() => {
+      deleteCardPopup.handleSubmitCallback(() => {
         api.deleteCard(cardId)
           .then(() => {
             deleteCardPopup.close();
